@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class Eleve extends Personne implements Comparable<Eleve> {
+public class Eleve extends Personne {
 
     private int numeroIdentifiant = 0;
     private static int identifiantIterator;
@@ -130,12 +130,6 @@ public class Eleve extends Personne implements Comparable<Eleve> {
     public int hashCode() {
         return Objects.hash(numeroIdentifiant, dateNaissance, evaluations, professeurs);
     }
-
-    @Override
-    public int compareTo(Eleve o) {
-        return Double.compare(getMediane(), o.getMediane());
-    }
-
 
 
 

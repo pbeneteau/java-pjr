@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.util.Collection;
-import java.util.EventListener;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 
@@ -9,12 +7,11 @@ public class Promotion {
 
 private String nom;
 
-    private Container eleves;
-    private List<Eleve> listEleves = new ArrayList<>();
+    private ArrayList<Eleve> listeEleves = new ArrayList<Eleve>();
 
 
     public void addEleve(Eleve eleve){
-        listEleves.add(eleve);
+        listeEleves.add(eleve);
     }
 
 
@@ -22,8 +19,8 @@ private String nom;
         this.nom = nom;
     }
 
-    public Container getVEleves() {
-        return eleves;
+    public ArrayList<Eleve> getListeEleves() {
+        return listeEleves;
     }
 
     public String getNom() {
@@ -36,16 +33,51 @@ private String nom;
 
     public Eleve searchStudent(int studentNumber) throws IllegalStateException {
 
-        if (this.listEleves.isEmpty()) {
+        if (this.listeEleves.isEmpty()) {
             throw new IllegalStateException("Cet élève n'existe pas.");
         }
 
-        for (Eleve listEleve : this.listEleves) {
+        for (Eleve listEleve : this.listeEleves) {
 
             if (listEleve.getNumeroIdentifiant() == studentNumber) {
                 return listEleve;
             }
         }
         throw new IllegalStateException("Cet élève n'existe pas.");
+    }
+
+    public void triMoyenneCroissante() {
+
+
+        MoyenneCompare comp = new MoyenneCompare();
+
+         Collections.sort(listeEleves, comp);
+
+    }
+    public void triMoyenneDecroissante() {
+
+
+        MoyenneCompare comp = new MoyenneCompare();
+
+        Collections.sort(listeEleves, comp.reversed());
+
+    }
+
+
+    public void triMedianeCroissante() {
+
+
+        MedianeCompare comp = new MedianeCompare();
+
+        Collections.sort(listeEleves, comp);
+
+    }
+    public void triMedianeDecroissante() {
+
+
+        MedianeCompare comp = new MedianeCompare();
+
+        Collections.sort(listeEleves, comp.reversed());
+
     }
 }

@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Professeur professeur1 = new Professeur("Jean","Louis");
+        Professeur professeur1 = new Professeur("Jean","Louis", "hh");
         Eleve eleve1 = new Eleve("Peleve","Neleve",1,2,1998,"L1");
         Evaluation evaluation1 = new Evaluation("Maths",12,eleve1, professeur1);
         Evaluation evaluation2 = new Evaluation("Maths",12,eleve1, professeur1);
