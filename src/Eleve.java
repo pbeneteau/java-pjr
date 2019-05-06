@@ -6,12 +6,11 @@ public class Eleve extends Personne {
 
     private int numeroIdentifiant = 0;
     private static int identifiantIterator;
-    static private int nb_evaluations = 10;
+    static private final int nb_evaluations = 10;
     private CustomDate dateNaissance;
     private ArrayList<Evaluation> evaluations = new ArrayList<>();
     Set<Professeur> professeurs = new HashSet<>();
     private String nomPromotion ;
-
 
     Eleve() {
     }
@@ -29,7 +28,7 @@ public class Eleve extends Personne {
     public double getMoyenne() {
 
         if (evaluations.size() == 0) {
-            throw new IllegalStateException("Pas de note");
+            throw new IllegalStateException("Pas de note.");
         }
 
         double somme = 0.0;
@@ -46,7 +45,7 @@ public class Eleve extends Personne {
         double res = 0;
 
         if (evaluations.size() == 0) {
-            throw new IllegalStateException("Pas de note");
+            throw new IllegalStateException("Pas de note.");
         }
 
         if (evaluations.size() % 2 == 0) {
@@ -65,6 +64,18 @@ public class Eleve extends Personne {
     public void addEvaluation(Evaluation evaluation) {
         evaluations.add(evaluation);
         Collections.sort(evaluations);
+    }
+
+    public ArrayList<Evaluation> getEvaluations() {
+        return evaluations;
+    }
+
+    public Evaluation getEvaluation(int i) throws IllegalStateException {
+
+        if (evaluations.get(i) != null) {
+            throw new IllegalStateException("Cet evaluation n'existe pas.");
+        }
+        return evaluations.get(i);
     }
 
     public Set<Professeur> getCorrecteurs() {
@@ -112,10 +123,7 @@ public class Eleve extends Personne {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Eleve eleve = (Eleve) o;
-        return numeroIdentifiant == eleve.numeroIdentifiant &&
-                Objects.equals(dateNaissance, eleve.dateNaissance) &&
-                Objects.equals(evaluations, eleve.evaluations) &&
-                Objects.equals(professeurs, eleve.professeurs);
+        return numeroIdentifiant == eleve.numeroIdentifiant;
     }
 
     @Override

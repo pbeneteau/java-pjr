@@ -34,10 +34,10 @@ private String nom;
         this.nom = nom;
     }
 
-    public Eleve searchStudent(int studentNumber){
+    public Eleve searchStudent(int studentNumber) throws IllegalStateException {
 
         if (this.listEleves.isEmpty()) {
-            return null;
+            throw new IllegalStateException("Cet élève n'existe pas.");
         }
 
         for (Eleve listEleve : this.listEleves) {
@@ -46,6 +46,6 @@ private String nom;
                 return listEleve;
             }
         }
-        return null;
+        throw new IllegalStateException("Cet élève n'existe pas.");
     }
 }
