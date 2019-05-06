@@ -13,4 +13,8 @@ public class Professeur extends Personne {
     public String toString() {
         return super.toString();
     }
+
+    public Eleve searchStudentFromPromotion(Promotion promotion, int studentNumber) {
+        return promotion.searchStudent(studentNumber);
+    }
 }

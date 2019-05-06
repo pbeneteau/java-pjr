@@ -10,8 +10,7 @@ public class Promotion {
 private String nom;
 
     private Container eleves;
-
-    List<Eleve> listEleves = new ArrayList<>();
+    private List<Eleve> listEleves = new ArrayList<>();
 
 
     public void addEleve(Eleve eleve){
@@ -22,7 +21,6 @@ private String nom;
     public Promotion(String nom) {
         this.nom = nom;
     }
-
 
     public Container getVEleves() {
         return eleves;
@@ -38,7 +36,7 @@ private String nom;
 
     public Eleve searchStudent(int studentNumber){
 
-        if(this.listEleves.isEmpty()) {
+        if (this.listEleves.isEmpty()) {
             return null;
         }
 
