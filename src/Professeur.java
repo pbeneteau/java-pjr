@@ -3,10 +3,12 @@ import javax.lang.model.type.NullType;
 // On utilise l'héritage, on crée la classe Personne , les classes professeur et étudiant héritent de personne
 public class Professeur extends Personne {
 
+    private String matiere;
+
     public Professeur() {
     }
 
-    public Professeur(String prenom, String nom) {
+    public Professeur(String prenom, String nom, String matiere) {
         super(prenom, nom);
     }
 
@@ -21,15 +23,24 @@ public class Professeur extends Personne {
 
     public void setNote(Promotion promotion, int studentNumber, float mark, int i) {
 
+        Eleve eleve;
+        Evaluation evaluation;
+
         try {
 
-            Eleve eleve = searchStudentFromPromotion(promotion, studentNumber);
-            eleve.getEvaluation(i).setNote(mark);
+            eleve = searchStudentFromPromotion(promotion, studentNumber);
 
+            try {
+
+                evaluation = eleve.getEvaluation(i);
+                evaluation.setNote(mark);
+
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
+                eleve.addEvaluation(new Evaluation(this.matiere, mark, eleve, this));
+            }
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 }
