@@ -35,7 +35,7 @@ private String nom;
     public void setNom(String nom) {
         this.nom = nom;
     }
-    public Eleve Rechercher(int numeroIdentifiant){
+    public Eleve rechercher(int numeroIdentifiant){
         boolean exist=false;
 
         if(this.listEleves.isEmpty()) {
